@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity"
+    android:background="@drawable/cardbackground">
+    
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include
+            layout="@layout/app_bar"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        style="@style/DarkModeHidden"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true" />
+
+    <include
+        layout="@layout/content_main" />
+
+   <ImageView
+       android:layout_width="40dp"
+       android:id="@+id/floatingActionButton"
+       android:clickable="true"
+       android:paddingLeft="10dp"
+       android:focusable="true"
+       app:backgroundTint="@color/cardColorOrange"
+       app:layout_anchor="@+id/imageView2"
+       app:rippleColor="@color/action_bar"
+       android:src="@drawable/ic_main_menu"
+       android:layout_height="?attr/actionBarSize"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
