@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotificationActivity">
+    <include
+        android:id="@+id/bar"
+        app:title="Notifications"
+        layout="@layout/notification_bar"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/bar"
+        android:padding="10dp"
+        android:divider="@android:color/transparent"
+        android:id="@+id/notification_list"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="1dp" />
+</RelativeLayout>

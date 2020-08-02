@@ -1,0 +1,3 @@
+[02-Aug-2020 09:16:08 UTC] PHP Notice:  Undefined index: email in /home/jt75rds0a8oq/public_html/rhcms/sih_files/logininfo.php on line 7
+[02-Aug-2020 09:16:08 UTC] PHP Notice:  Undefined index: password in /home/jt75rds0a8oq/public_html/rhcms/sih_files/logininfo.php on line 8
+[02-Aug-2020 09:16:08 UTC] PHP Notice:  Undefined variable: emparray in /home/jt75rds0a8oq/public_html/rhcms/sih_files/logininfo.php on line 21

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VerifyLocationActivity">
+
+    <include
+        android:id="@+id/bar"
+        layout="@layout/app_bar_verify" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:text="@string/terms_and_conditions"
+        android:layout_below="@+id/bar"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text=""
+        android:layout_height="wrap_content"/>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I accept the above Terms &amp; Conditions"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:layout_width="match_parent"
+        android:background="@drawable/round_btn"
+        android:text="Click Image"
+        android:id="@+id/verify_Btn"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_height="wrap_content"/>
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,10 +1,19 @@
 package jay.shankar.sih2020_digiphoenix;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -13,6 +22,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.androidstudy.networkmanager.Monitor;
+import com.androidstudy.networkmanager.Tovuti;
+import com.mindorks.paracamera.Camera;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +45,32 @@ public class TenderDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tender_details);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+
         getDetails();
+        Tovuti.from(this).monitor(new Monitor.ConnectivityListener(){
+            @Override
+            public void onConnectivityChanged(int connectionType, boolean isConnected, boolean isFast){
+                // TODO: Handle the connection...
+                if(isConnected)
+                {
+                    getDetails();
+                }
+                else {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(TenderDetailsActivity.this);
+                    alert.setTitle("Error");
+                    alert.setMessage("Connect to Internet for Sending Statistical Usage of App and Development");
+                    alert.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                                startActivity(new Intent(Settings.ACTION_DATA_USAGE_SETTINGS));
+                        }
+                    });
+                    alert.setCancelable(false);
+                    alert.create();
+                    alert.show();
+                }
+            }
+        });
     }
 
     public void getDetails(){
