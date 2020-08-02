@@ -1,0 +1,10 @@
+[02-Aug-2020 05:14:32 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'jnu123' for key 'email' in /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php:108
+Stack trace:
+#0 /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php(108): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php on line 108
+[02-Aug-2020 05:14:41 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'jnu123' for key 'email' in /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php:108
+Stack trace:
+#0 /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php(108): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php on line 108
