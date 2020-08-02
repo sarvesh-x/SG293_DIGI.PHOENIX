@@ -19,6 +19,7 @@ import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -37,9 +38,7 @@ import java.util.Map;
 public class UpdateTodaysWorkActivity extends AppCompatActivity implements LocationListener{
 
 
-    String[] lat_lon = HomeActivity.lat_long.split(",");
-    double lat = Double.parseDouble(lat_lon[0]);
-    double lon = Double.parseDouble(lat_lon[1]);;
+
     double current_lat,current_lon;
     LocationManager locationManager;
     ProgressDialog progressDialog;
@@ -56,7 +55,12 @@ public class UpdateTodaysWorkActivity extends AppCompatActivity implements Locat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_todays_work);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+        String[] lat_lon = HomeActivity.lat_long.split(",");
+        double lat = Double.parseDouble(lat_lon[0]);
+        double lon = Double.parseDouble(lat_lon[1]);
 
+        //Toast.makeText(UpdateTodaysWorkActivity.this,""+lat+","+lon,Toast.LENGTH_SHORT).show();
         getLocation();
 
         float[] dist = new float[5];
@@ -496,7 +500,6 @@ public class UpdateTodaysWorkActivity extends AppCompatActivity implements Locat
 
                     } else
                         Toast.makeText(UpdateTodaysWorkActivity.this,"Please Fill All of the Above Fields",Toast.LENGTH_SHORT).show();
-
                 }
             });
         }
