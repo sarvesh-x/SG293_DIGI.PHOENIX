@@ -4,7 +4,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -23,14 +22,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -39,15 +36,18 @@ import java.util.Map;
 
 public class UpdateTodaysWorkActivity extends AppCompatActivity implements LocationListener{
 
-    double lat,lon;
+
+    String[] lat_lon = HomeActivity.lat_long.split(",");
+    double lat = Double.parseDouble(lat_lon[0]);
+    double lon = Double.parseDouble(lat_lon[1]);;
     double current_lat,current_lon;
     LocationManager locationManager;
     ProgressDialog progressDialog;
     private RequestQueue requestQueue,requestQueue1;
     Button camera_btn;
     private static final String URL = "http://gyanamonline.com/rhcms/sih_files/update_details.php";
-    private static final String TS_ID_URL = "http://gyanamonline.com/rhcms/sih_files/get_ts_id.php";
-    public static String ts_id = null;
+    //private static final String TS_ID_URL = "http://gyanamonline.com/rhcms/sih_files/get_ts_id.php";
+    //public static String ts_id = null;
     private StringRequest request,request1;
     String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date()); // stores current date
 

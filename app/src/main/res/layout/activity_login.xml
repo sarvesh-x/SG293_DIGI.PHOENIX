@@ -68,7 +68,7 @@
             android:clickable="true"
             android:layout_marginTop="20dp"
             android:background="@android:color/holo_orange_dark"
-            android:text="Sign In"
+            android:text="Sign In as Contactor"
             android:id="@+id/sign_in"
             android:textAllCaps="false"
             android:textColor="#FFF"
@@ -94,7 +94,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="95dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/ic_launcher_foreground"
+        android:src="@drawable/favicon"
+        android:background="@drawable/background_white"
         android:padding="5dp" />
 
     <TextView

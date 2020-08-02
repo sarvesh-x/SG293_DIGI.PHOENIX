@@ -17,15 +17,29 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.navigation.NavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private AppBarConfiguration mAppBarConfiguration;
     private CardView show_tender_details, update_tender_details, budget_req, work_stats, contact_authority, current_progress, notifications, help_and_support;
     public String ts_id;
-
+    private static final String LOCATION_URL = "http://gyanamonline.com/rhcms/sih_files/tender_details.php";
     public String exp_budget_status;
+    public static String lat_long = null;
     public String tender_id,tender_type,tender_name,tender_issue_date,tender_due_date,tender_budget,tender_details,tender_exp_budget;
 
     @Override
@@ -33,6 +47,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        getLocationSite();
         //Toast.makeText(HomeActivity.this, ""+LoginActivity.user.get(2), Toast.LENGTH_SHORT).show();
 
         Toolbar toolbar = null;
@@ -157,4 +172,39 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    public void getLocationSite(){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, LOCATION_URL,
+                new Response.Listener<String>() {
+                    // @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+
+                            JSONArray array = new JSONArray(response);
+                            JSONObject t_details_current = array.getJSONObject(0);
+                            lat_long = t_details_current.get("lat_long").toString();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> hashMap = new HashMap<String, String>();
+                hashMap.put("t_id",LoginActivity.user.get(2));
+                return hashMap;
+            }
+        };
+
+        Volley.newRequestQueue(HomeActivity.this).add(stringRequest);
+    }
+
 }
