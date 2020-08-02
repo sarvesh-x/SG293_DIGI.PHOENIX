@@ -160,30 +160,32 @@ public class LoginActivity extends Activity {
         });
         password.setLongClickable(false);
         password.setTextIsSelectable(false);
-        Button thirdPartySurvey = (Button) findViewById(R.id.thirdPartySurvey);
-        Button sign_in = (Button) findViewById(R.id.sign_in);
+        final Button thirdPartySurvey = (Button) findViewById(R.id.thirdPartySurvey);
+        final Button sign_in = (Button) findViewById(R.id.sign_in);
         requestQueue = Volley.newRequestQueue(LoginActivity.this);
-        sign_in.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (email.getText().length() != 0 || password.getText().length() != 0) {
-                    login();
-                }else
-                    Toast.makeText(LoginActivity.this,"Invalid Email or Password!",Toast.LENGTH_SHORT).show();
-            }
-        });
-        thirdPartySurvey.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,ThirdPartySurveyActivity.class));
-            }
-        });
+
         if(checkAndRequestPermissions()){
             Tovuti.from(this).monitor(new Monitor.ConnectivityListener(){
                 @Override
                 public void onConnectivityChanged(int connectionType, boolean isConnected, boolean isFast){
                     // TODO: Handle the connection...
                     if(isConnected) {
+
+                        sign_in.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (email.getText().length() != 0 || password.getText().length() != 0) {
+                                    login();
+                                }else
+                                    Toast.makeText(LoginActivity.this,"Invalid Email or Password!",Toast.LENGTH_SHORT).show();
+                                        }
+                        });
+                        thirdPartySurvey.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(LoginActivity.this,ThirdPartySurveyActivity.class));
+                            }
+                        });
                     }
                     else {
                         AlertDialog.Builder alert = new AlertDialog.Builder(LoginActivity.this);

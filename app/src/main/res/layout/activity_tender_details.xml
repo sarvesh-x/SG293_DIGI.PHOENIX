@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/current_tender_head"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:textStyle="bold"
+        android:text="Current Tender Details :"
+        android:layout_marginLeft="5dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tender_id"
+        android:text="Tender ID: "
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/current_tender_head"
+        android:layout_marginTop="40dp"
+        android:textAllCaps="true"
+        android:textStyle="italic"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tender_type"
+        android:text="Tender Type: "
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/tender_id"
+        android:layout_marginTop="40dp"
+        android:textAllCaps="true"
+        android:textStyle="italic"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tender_name"
+        android:text="Tender Name: "
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/tender_type"
+        android:layout_marginTop="40dp"
+        android:textAllCaps="true"
+        android:textStyle="italic"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tender_issue_date"
+        android:text="Tender Issue Date: "
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/tender_name"
+        android:layout_marginTop="40dp"
+        android:textAllCaps="true"
+        android:textStyle="italic"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tender_due_date"
+        android:text="Tender Due Date: "
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/tender_issue_date"
+        android:layout_marginTop="40dp"
+        android:textAllCaps="true"
+        android:textStyle="italic"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tender_budget"
+        android:text="Tender budget: "
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/tender_due_date"
+        android:layout_marginTop="40dp"
+        android:textAllCaps="true"
+        android:textStyle="italic"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tender_details"
+        android:text="Tender Details: "
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/tender_budget"
+        android:layout_marginTop="40dp"
+        android:textAllCaps="true"
+        android:textStyle="italic"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tender_exp_budget"
+        android:text="Tender Budget Expansion : "
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/tender_details"
+        android:layout_marginTop="40dp"
+        android:textAllCaps="true"
+        android:textStyle="italic"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>
