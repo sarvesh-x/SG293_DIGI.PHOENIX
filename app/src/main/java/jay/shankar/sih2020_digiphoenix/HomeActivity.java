@@ -214,7 +214,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         contact_authority.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(HomeActivity.this,RTCActivity.class));
             }
         });
         notifications.setOnClickListener(new View.OnClickListener() {

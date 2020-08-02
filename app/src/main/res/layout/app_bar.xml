@@ -11,6 +11,6 @@
     app:theme="@style/MyToolbarTheme"
     app:titleTextColor="@color/white"
     app:subtitleTextColor="@color/white"
-    app:title="       Home">
+    app:title="  Home">
 
 </androidx.appcompat.widget.Toolbar>

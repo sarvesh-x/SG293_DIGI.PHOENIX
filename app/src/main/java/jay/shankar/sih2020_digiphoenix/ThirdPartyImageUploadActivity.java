@@ -211,7 +211,7 @@ public class ThirdPartyImageUploadActivity extends AppCompatActivity implements 
                 ThirdPartyImageUploadActivity.ImageProcessClass imageProcessClass = new ThirdPartyImageUploadActivity.ImageProcessClass();
                 HashMap<String, String> HashMapParams = new HashMap<String, String>();
                 HashMapParams.put("t_id", ThirdPartyFeedbackActivity.tender_id);
-                HashMapParams.put(ImageName, ThirdPartySurveyActivity.thirdParty.get(1) + "_" + date + "_" + currentTime);
+                HashMapParams.put(ImageName, ThirdPartySurveyActivity.thirdParty.get(1) + "_" + date + "_" + currentTime+".png");
                 HashMapParams.put(ImagePath, toBase64(bitmap));
                 HashMapParams.put("lat_long", lat_long);
                 return imageProcessClass.ImageHttpRequest(UPLOAD_URL, HashMapParams);

@@ -25,7 +25,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ThirdPartyEndSurveyActivity"></activity>
+        <activity android:name=".RTCActivity"></activity>
+        <activity android:name=".ThirdPartyEndSurveyActivity" />
         <activity android:name=".ThirdPartyImageUploadActivity" />
         <activity android:name=".ThirdPartyFeedbackActivity" />
         <activity android:name=".ThirdPartyHomeActivity" />
