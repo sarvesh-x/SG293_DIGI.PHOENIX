@@ -1,9 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".UpdateTodaysWorkActivity">
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Upload Today's Work Details :"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"
+            android:id="@+id/main_head"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/tender_id_head"
+            android:text="Tender ID: "
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/main_head"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp" />
+
+        <EditText
+            android:id="@+id/update_tender_id"
+            android:layout_below="@+id/tender_id_head"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="20dp">
+
+        </EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/date_head"
+            android:text="Date: "
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/update_tender_id"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp" />
+
+        <EditText
+            android:id="@+id/update_date"
+            android:layout_below="@+id/date_head"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="20dp">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/todays_work_head"
+            android:text="Today's Work: "
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/update_date"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp" />
+
+        <EditText
+            android:id="@+id/update_todays_work"
+            android:layout_below="@+id/todays_work_head"
+            android:layout_marginLeft="20dp"
+            android:hint="Enter Today's Work Done"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="20dp">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/total_emp_head"
+            android:text="Total Employees Allotted: "
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/update_todays_work"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/update_total_emp"
+            android:layout_below="@+id/total_emp_head"
+            android:layout_marginLeft="20dp"
+            android:hint="Today's Total Employees"
+            android:longClickable="false"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="20dp">
+        </EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/present_emp_head"
+            android:text="Total EmployeesPresent : "
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/update_total_emp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp" />
+
+        <EditText
+            android:id="@+id/update_present_emp"
+            android:layout_below="@+id/present_emp_head"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:inputType="number"
+            android:longClickable="false"
+            android:hint="Employees Present Today"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="20dp">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/daily_wages_head"
+            android:text="Daily Wages: "
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/update_present_emp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp" />
+
+        <EditText
+            android:id="@+id/update_daily_wages"
+            android:layout_below="@+id/daily_wages_head"
+            android:layout_marginLeft="20dp"
+            android:longClickable="false"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:hint="Today's Daily Wages"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="20dp">
+        </EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/daily_exp_head"
+            android:text="Daily Expenses: "
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/update_daily_wages"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp" />
+
+        <EditText
+            android:id="@+id/update_daily_exp"
+            android:layout_below="@+id/daily_exp_head"
+            android:layout_marginLeft="20dp"
+            android:longClickable="false"
+            android:layout_width="match_parent"
+            android:inputType="numberDecimal"
+            android:hint="Today's Expenditure"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="20dp">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/reason_late_head"
+            android:text="Reason for Getting Late: "
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/update_daily_exp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp" />
+
+        <EditText
+            android:id="@+id/update_reason_late"
+            android:layout_below="@+id/reason_late_head"
+            android:layout_marginLeft="20dp"
+            android:longClickable="false"
+            android:layout_width="match_parent"
+            android:hint="Reason of getting Late"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="20dp">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/other_head"
+            android:text="Other Remarks: "
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/update_reason_late"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp" />
+
+        <EditText
+            android:id="@+id/update_other"
+            android:layout_below="@+id/other_head"
+            android:layout_marginLeft="20dp"
+            android:longClickable="false"
+            android:hint="Other Remarks (If Any)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="20dp">
+        </EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/work_completed_head"
+            android:text="Work Completed Today (%): "
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/update_other"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"/>
+        <EditText
+            android:id="@+id/update_work_completed"
+            android:layout_below="@+id/work_completed_head"
+            android:layout_marginLeft="20dp"
+            android:longClickable="false"
+            android:inputType="numberDecimal"
+            android:hint="Today's Work Completed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="20dp">
+        </EditText>
+        <Button
+            android:layout_width="wrap_content"
+            android:text="Upload Images Now"
+            android:layout_marginTop="20dp"
+            android:id="@+id/nextPage"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:clickable="true"
+            android:background="@drawable/round_btn"
+            android:layout_marginBottom="12dp"
+            android:layout_below="@+id/update_work_completed"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp" />
+
+    </RelativeLayout>
+</ScrollView>
+

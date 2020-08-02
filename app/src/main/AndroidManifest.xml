@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateTodaysWorkActivity"></activity>
+        <activity android:name=".ImageUploadActivity"></activity>
+        <activity android:name=".UpdateTodaysWorkActivity" />
         <activity android:name=".TenderDetailsActivity" />
         <activity android:name=".ThirdPartySurveyActivity" />
         <activity
