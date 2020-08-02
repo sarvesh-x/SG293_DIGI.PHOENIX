@@ -1,8 +1,10 @@
 package jay.shankar.sih2020_digiphoenix;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,21 +28,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.androidstudy.networkmanager.Monitor;
 import com.androidstudy.networkmanager.Tovuti;
 import com.mindorks.paracamera.Camera;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
@@ -60,10 +50,9 @@ import java.util.Locale;
 import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
+public class ThirdPartyImageUploadActivity extends AppCompatActivity implements LocationListener {
 
-public class ImageUploadActivity extends Activity implements LocationListener {
-
-    String UPLOAD_URL = "http://gyanamonline.com/rhcms/sih_files/fileUpload.php";
+    String UPLOAD_URL = "http://gyanamonline.com/rhcms/sih_files/ThirdPartyImageUpload.php";
     ImageView img;
     Button btn,nextBtn;
     boolean check = true;
@@ -80,17 +69,15 @@ public class ImageUploadActivity extends Activity implements LocationListener {
     private ListView list;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> arrayList;
-    private static final String TS_ID_URL = "http://gyanamonline.com/rhcms/sih_files/get_ts_id.php";
     public static String ts_id = null;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_upload);
+        setContentView(R.layout.activity_third_party_image_upload);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
-        Next_btn = findViewById(R.id.ImageUploadNext_btn);
+        //Toast.makeText(ImageUploadActivity.this,""+ts_id,Toast.LENGTH_LONG).show();
+        Next_btn = findViewById(R.id.ThirdPartyImageUploadNext_btn);
         Next_btn.setVisibility(View.GONE);
         arrayList = new ArrayList<String>();
 
@@ -101,16 +88,15 @@ public class ImageUploadActivity extends Activity implements LocationListener {
                 if(isConnected)
                 {
 
-                    btn = findViewById(R.id.addBtn);
-                    list = (ListView) findViewById(R.id.Imagelist);
+                    btn = findViewById(R.id.ThirdParty_addBtn);
+                    list = (ListView) findViewById(R.id.ThirdParty_Imagelist);
 
                     getLocation();
 
                     Next_btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent = new Intent(ImageUploadActivity.this, InvoiceUploadActivity.class);
-                            intent.putExtra("ts_id",ts_id);
+                            Intent intent = new Intent(ThirdPartyImageUploadActivity.this, ThirdPartyEndSurveyActivity.class);
                             startActivity(intent);
                             finish();
                         }
@@ -130,7 +116,7 @@ public class ImageUploadActivity extends Activity implements LocationListener {
                                     .setImageFormat(Camera.IMAGE_JPEG)
                                     .setCompression(50)
                                     .setImageHeight(400)
-                                    .build(ImageUploadActivity.this);
+                                    .build(ThirdPartyImageUploadActivity.this);
                             try {
                                 image_position = position;
                                 camera.takePicture();
@@ -142,15 +128,16 @@ public class ImageUploadActivity extends Activity implements LocationListener {
                     btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            get_ts_id();
-                            get_ts_id();
+
+                            Toast.makeText(ThirdPartyImageUploadActivity.this,""+ThirdPartyFeedbackActivity.tender_id,Toast.LENGTH_LONG).show();
                             arrayList.add("Click here to Capture Image");
                             adapter.notifyDataSetChanged();
+
                         }
                     });
                 }
                 else {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(ImageUploadActivity.this);
+                    AlertDialog.Builder alert = new AlertDialog.Builder(ThirdPartyImageUploadActivity.this);
                     alert.setTitle("Error");
                     alert.setMessage("Connect to Internet for Sending Statistical Usage of App and Development");
                     alert.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
@@ -201,14 +188,14 @@ public class ImageUploadActivity extends Activity implements LocationListener {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                progressDialog = ProgressDialog.show(ImageUploadActivity.this, "Image is Uploading", "Please Wait", false, false);
+                progressDialog = ProgressDialog.show(ThirdPartyImageUploadActivity.this, "Image is Uploading", "Please Wait", false, false);
             }
 
             @Override
             protected void onPostExecute(String string1) {
                 super.onPostExecute(string1);
                 progressDialog.dismiss();
-                Toast.makeText(ImageUploadActivity.this, string1, Toast.LENGTH_LONG).show();
+                Toast.makeText(ThirdPartyImageUploadActivity.this, string1, Toast.LENGTH_LONG).show();
                 arrayList.set(image_position,"Uploaded!");
                 adapter.notifyDataSetChanged();
                 Next_btn.setVisibility(View.VISIBLE);
@@ -221,11 +208,10 @@ public class ImageUploadActivity extends Activity implements LocationListener {
             protected String doInBackground(Void... params) {
                 String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
-                ImageProcessClass imageProcessClass = new ImageProcessClass();
+                ThirdPartyImageUploadActivity.ImageProcessClass imageProcessClass = new ThirdPartyImageUploadActivity.ImageProcessClass();
                 HashMap<String, String> HashMapParams = new HashMap<String, String>();
-                get_ts_id();
-                HashMapParams.put("ts_id", ts_id);
-                HashMapParams.put(ImageName, LoginActivity.user.get(0) + "_" + date + "_" + currentTime);
+                HashMapParams.put("t_id", ThirdPartyFeedbackActivity.tender_id);
+                HashMapParams.put(ImageName, ThirdPartySurveyActivity.thirdParty.get(1) + "_" + date + "_" + currentTime);
                 HashMapParams.put(ImagePath, toBase64(bitmap));
                 HashMapParams.put("lat_long", lat_long);
                 return imageProcessClass.ImageHttpRequest(UPLOAD_URL, HashMapParams);
@@ -293,41 +279,6 @@ public class ImageUploadActivity extends Activity implements LocationListener {
 
     }
 
-    private StringRequest request1;
-    private RequestQueue requestQueue1;
-
-    public void get_ts_id(){
-
-        request1 = new StringRequest(Request.Method.POST, TS_ID_URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-
-                    JSONArray array = new JSONArray(response);
-                    JSONObject t_array = array.getJSONObject(0);
-                    ts_id = t_array.getString("ts_id");
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> hashMap = new HashMap<String, String>();
-                String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date()); // stores current date
-                hashMap.put("t_id", LoginActivity.user.get(2).toString());
-                return hashMap;
-            }
-        };
-        requestQueue1 = Volley.newRequestQueue(ImageUploadActivity.this);
-        requestQueue1.add(request1);
-    }
 
     public String toBase64(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -342,7 +293,7 @@ public class ImageUploadActivity extends Activity implements LocationListener {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
-            // public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
@@ -365,7 +316,7 @@ public class ImageUploadActivity extends Activity implements LocationListener {
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        Toast.makeText(ImageUploadActivity.this,"Enable it Manually to Upload Images",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ThirdPartyImageUploadActivity.this,"Enable it Manually to Upload Images",Toast.LENGTH_SHORT).show();
                         dialog.cancel();
                     }
                 });
@@ -375,9 +326,10 @@ public class ImageUploadActivity extends Activity implements LocationListener {
 
     @Override
     public void onLocationChanged (Location location){
+
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
-        lat_long = String.valueOf(latitude)+","+String.valueOf(longitude);
+        lat_long = String.valueOf(latitude)+"_"+String.valueOf(longitude);
 
     }
 
@@ -397,4 +349,3 @@ public class ImageUploadActivity extends Activity implements LocationListener {
     }
 
 }
-

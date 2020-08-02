@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThirdPartyHomeActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="Next"
+        android:id="@+id/thirdPartyHome_NextBtn"
+        android:background="@drawable/round_btn"
+        android:layout_height="wrap_content"/>
+
+    <WebView
+        android:id="@+id/thirdParty_webView"
+        android:layout_width="match_parent"
+        android:layout_height="681dp"
+        android:layout_alignEnd="@+id/thirdPartyHome_NextBtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="0dp" />
+
+</RelativeLayout>

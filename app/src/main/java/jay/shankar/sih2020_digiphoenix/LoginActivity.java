@@ -61,6 +61,7 @@ public class LoginActivity extends Activity {
     private CheckBox houseowner;
     private EditText email;
     private EditText password;
+    Button thirdPartySurvey,contractor_sign_in;
     //private Button sign_in;
     private RequestQueue requestQueue;
     private static final String URL = "http://gyanamonline.com/rhcms/sih_files/logininfo.php";
@@ -170,69 +171,13 @@ public class LoginActivity extends Activity {
         });
         password.setLongClickable(false);
         password.setTextIsSelectable(false);
-        Button thirdPartySurvey = (Button) findViewById(R.id.thirdPartySurvey);
-        Button sign_in = (Button) findViewById(R.id.sign_in);
+        thirdPartySurvey = findViewById(R.id.thirdPartySurvey);
+        contractor_sign_in = findViewById(R.id.contractor_sign_in);
         requestQueue = Volley.newRequestQueue(LoginActivity.this);
-        sign_in.setOnClickListener(new View.OnClickListener() {
+        contractor_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (email.getText().length() != 0 || password.getText().length() != 0) {
-                    progressDialog.setMessage("Please Wait, Logging in...");
-                    progressDialog.show();
-
-                    request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                progressDialog.dismiss();
-                                JSONArray array = new JSONArray(response);
-                                JSONObject t_array = array.getJSONObject(0);
-
-                                if (t_array.get("email").equals(email.getText().toString()) || t_array.get("password").equals(password.getText().toString())) {
-                                    if(Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
-
-                                        user.add(t_array.get("name").toString());//stores name of the user    0
-                                        user.add(t_array.get("email").toString());//stores username of the user     1
-                                        user.add(t_array.get("t_id").toString());//stores tender ID alloted to the user    2
-                                        user.add(t_array.get("dob").toString());//stores the date of birth of the user      3
-                                        user.add(t_array.get("mobile").toString());//stores the mobile no. of the user     4
-                                        user.add(t_array.get("address").toString());//stores the address of the user       5
-
-                                        Toast.makeText(getApplicationContext(), "Welcome " + user.get(0), Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                                        intent.putExtra("username", email.getText().toString());
-                                        startActivity(intent);
-                                    }else
-                                        Toast.makeText(LoginActivity.this,"Please Enter a Valid Email",Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "Username or Password can't be Empty!", Toast.LENGTH_SHORT).show();
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-
-                            progressDialog.dismiss();
-                        }
-                    }) {
-                        @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
-                            HashMap<String, String> hashMap = new HashMap<String, String>();
-                            hashMap.put("email", email.getText().toString());
-                            hashMap.put("password", password.getText().toString());
-                            return hashMap;
-                        }
-                    };
-
-                    requestQueue.add(request);
-                }else
-                    Toast.makeText(LoginActivity.this,"Invalid Email or Password!",Toast.LENGTH_SHORT).show();
+                login();
             }
         });
         thirdPartySurvey.setOnClickListener(new View.OnClickListener() {
@@ -266,10 +211,64 @@ public class LoginActivity extends Activity {
                 }
             });
 
-
         }
     }
+    private void login(){
 
+        progressDialog.setMessage("Please Wait, Logging in...");
+        progressDialog.show();
+
+        request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    progressDialog.dismiss();
+                    JSONArray array = new JSONArray(response);
+                    JSONObject t_array = array.getJSONObject(0);
+
+                    if (t_array.get("email").equals(email.getText().toString()) || t_array.get("password").equals(password.getText().toString())) {
+
+                        user.add(t_array.get("name").toString());//stores name of the user    0
+                        user.add(t_array.get("email").toString());//stores username of the user     1
+                        user.add(t_array.get("t_id").toString());//stores tender ID alloted to the user    2
+                        user.add(t_array.get("dob").toString());//stores the date of birth of the user      3
+                        user.add(t_array.get("mobile").toString());//stores the mobile no. of the user     4
+                        user.add(t_array.get("address").toString());//stores the address of the user       5
+
+                        Toast.makeText(getApplicationContext(), "Welcome " + user.get(0), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        intent.putExtra("username", email.getText().toString());
+                        startActivity(intent);
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Wrong Username or Password!", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                progressDialog.dismiss();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("email", email.getText().toString());
+                hashMap.put("password", password.getText().toString());
+                return hashMap;
+            }
+        };
+
+        requestQueue.add(request);
+
+    }
 
     private boolean checkAndRequestPermissions() {
         int permissionSendMessage = ContextCompat.checkSelfPermission(this,

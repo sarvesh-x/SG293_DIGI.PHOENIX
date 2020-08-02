@@ -51,6 +51,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public String exp_budget_status;
     String VERIFIED = null;
     public static String lat_long = null;
+    public static double lat,lon;
+    public static  String RANGE;
     public String tender_id,tender_type,tender_name,tender_issue_date,tender_due_date,tender_budget,tender_details,tender_exp_budget;
 
 
@@ -102,7 +104,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             JSONArray array = new JSONArray(response);
                             JSONObject t_details_current = array.getJSONObject(0);
                             VERIFIED = t_details_current.get("vp").toString();
+                            lat_long = t_details_current.get("lat_long").toString();
 
+                            String[] latlong =  lat_long.split(",");
+                            lat = Double.parseDouble(latlong[0]);
+                            lon = Double.parseDouble(latlong[1]);
+                            RANGE = t_details_current.get("r").toString();
                             if(VERIFIED.equals("No")){
                                 startActivity(new Intent(HomeActivity.this,VerifyLocationActivity.class));
                                 finish();

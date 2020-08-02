@@ -65,14 +65,12 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
             android:layout_marginTop="20dp"
             android:background="@android:color/holo_orange_dark"
             android:text="Sign In as Contactor"
-            android:id="@+id/sign_in"
+            android:id="@+id/contractor_sign_in"
             android:textAllCaps="false"
-            android:textColor="#FFF"
-            android:focusable="true" />
+            android:textColor="#FFF" />
 
         <Button
             android:id="@+id/thirdPartySurvey"
