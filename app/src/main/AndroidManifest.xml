@@ -25,7 +25,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UploadLabReportActivity"></activity>
+        <activity
+            android:name=".UploadSuccessActivity"
+            android:label="@string/title_activity_upload_success"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".UploadLabReportActivity" />
         <activity android:name=".InvoiceUploadActivity" />
         <activity
             android:name=".NotificationActivity"
