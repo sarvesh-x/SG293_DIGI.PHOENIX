@@ -163,7 +163,7 @@
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
                              
-                            <li><a href="index.php?page=cmp_profile"data-target="profile"><i class="material-icons">person</i>Company Profile</a></li>
+                            <li><a href="index.php?page=cmp_profile"data-target="profile"><i class="material-icons">person</i> Profile</a></li>
                             
                               <li><a href="login.php" data-target="logout"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
@@ -237,7 +237,18 @@
                         </ul>
 
 </li>
+<li>
+<a href="#" data-toggle="modal" onclick="myFunctionp(1)"><i class="material-icons">chat</i>
+<span>Support</span></a>
 
+
+</li>
+<li>
+<a href="index.php?page=backup_database"><i class="material-icons">backup</i>
+<span>Backup Database</span></a>
+
+
+</li>
 
            </ul>
             </div>
@@ -253,5 +264,21 @@ function myFunctionp(id) {
     $("#uploadModal").modal("show");
 }
 </script>               </td>
- 	
+ 		<!-- Modal -->
+			<!-- Modal -->
+<div id="uploadModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content"style="width:400px;height:450px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Help desk</h4>
+      </div>
+
+      </div> 
+    </div>
+
+  </div>
 </div>
+

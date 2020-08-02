@@ -26,6 +26,34 @@ if(isset($_POST['login_btn']))
 		   </script>";
 	   }
 }
+# forgat page
+if(isset($_POST['forgat']))
+{
+	$header='RHCMS';
+	$subject='Forgot password';
+	$email=$_POST['email'];
+	$stmt=$db_con->prepare("SELECT user_master.email,user_master.password FROM user_master WHERE user_master.email='$email'");
+	$stmt->execute();
+	$row=$stmt->fetch(PDO::FETCH_ASSOC);
+	  $email=$row['email'];
+	  $password=$row['password'];
+	   if($email=='')
+	   {
+		   
+		   echo "<script>
+		   alert('Email not found');
+		   window.location.replace('../');
+		   </script>";
+	   }
+	   else{
+$msg = "Your Password :".$password;
+$msg = wordwrap($msg,70);
+mail($email,$subject,$msg,$headers);
+  echo "<script>
+		   alert('Email Send');
+		   window.location.replace('../');
+		   </script>";	   }
+}
 #update_cmp_logo
 if(isset($_POST['cmp_logo_upload'])){
 

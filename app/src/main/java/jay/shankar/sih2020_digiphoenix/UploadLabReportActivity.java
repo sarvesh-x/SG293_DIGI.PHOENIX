@@ -29,7 +29,7 @@ import jay.shankar.sih2020_digiphoenix.FilePath;
 
 public class UploadLabReportActivity extends AppCompatActivity implements View.OnClickListener  {
 
-    public static final String SERVER_URL = "http://kshatriyaschool.com/sih/sih_files/InvoiceUpload.php";
+    public static final String SERVER_URL = "http://gyanamonline.com/rhcms/sih_files/InvoiceUpload.php";
 
     private static final int PICK_FILE_REQUEST = 1;
     private static final String TAG = InvoiceUploadActivity.class.getSimpleName();

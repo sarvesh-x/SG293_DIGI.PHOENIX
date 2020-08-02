@@ -1,3 +1,22 @@
+<?php 
+include'../db/dc.php';
+?>
+<!DOCTYPE html>  
+<html>  
+   <head>  
+      <title></title>  
+      <meta name = "viewport" content = "width = device-width, initial-scale = 1">        
+      <link rel = "stylesheet"  
+         href = "https://fonts.googleapis.com/icon?family=Material+Icons">  
+      <link rel = "stylesheet"   
+         href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">  
+      <script type = "text/javascript"  
+         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>             
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">  
+      </script>   
+   </head>  
+   <body class = "container">   
+         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <?php
@@ -69,15 +88,13 @@ if(isset($_POST['search']))
         
                 <div class="row">
                     <div class="col-sm-12">
-					<button class="btn"style="float:left;margin-right:9px;" onclick="goBack()"><i class = "material-icons large">arrow_back</i></button>
-					<h4 style="color:black;float:left;"><b style="color:gray;"><?php echo $t_name; ?> </b>Status <p style="color:orange;"><?php echo date('d M Y', strtotime($date)); ?></p></h4>
+					<h6 style="color:black;float:left;"><b style="color:gray;"><?php echo $t_name; ?> </b>Status <p><?php echo date('d-m-y', strtotime($date)); ?></p></h6>
 <form action=""method="POST"style="float:right;">
 <input type="date" name="from" value="<?php echo $dt; ?>">
 <input type="date" name="to"class="form-controal"value="<?php echo $dt; ?>">
 <input type="submit" name="search" value="search"class="btn">
 
 </form>
-					<hr>
 <script>
 function goBack() {
   window.history.back();
@@ -258,10 +275,10 @@ chart.render();
 		padding:2px;marging:0px;
 	}
 	</style>
-	<h5>Days Wise List</h5><a href="excel/daily_work_status.php?file=Daily Work Status&t_id=<?php echo $t_id; ?>&from=<?php echo $from; ?>&to=<?php echo $to; ?>" class="btn btn-primary btn-xs pull-right">Download Excel</a>    
+	<h5>Days Wise List</h5>
 	<table class="table">
-	<tr><th>Date</th><th>T.Work</th><th>Work%</th><th>Emp.</th><th>Wages</th><th>Exp.</th><th>R.Late</th><th>Invoice</th><th>Lab Test Report</th><th>Other</th></tr>
-	<?php $stmtss = $db_con->prepare("SELECT tender_status.lab_report,tender_status.ts_id,tender_status.date,tender_status.today_work,tender_status.total_emp,tender_status.emp_present,tender_status.daily_wages,tender_status.daily_expense,tender_status.reson_late,tender_status.invoice_file,tender_status.other,tender_status.work_completed FROM tender_status WHERE tender_status.t_id='$t_id' AND tender_status.date  between '$from' AND '$to' ORDER by tender_status.ts_id DESC");
+	<tr><th>Date</th><th>T.Work</th><th>Work%</th><th>Emp.</th><th>Wages</th><th>Exp.</th><th>R.Late</th><th>Invoice</th><th>Other</th></tr>
+	<?php $stmtss = $db_con->prepare("SELECT tender_status.ts_id,tender_status.date,tender_status.today_work,tender_status.total_emp,tender_status.emp_present,tender_status.daily_wages,tender_status.daily_expense,tender_status.reson_late,tender_status.invoice_file,tender_status.other,tender_status.work_completed FROM tender_status WHERE tender_status.t_id='$t_id' AND tender_status.date  between '$from' AND '$to' ORDER by tender_status.ts_id DESC");
         $stmtss->execute();
         while($row=$stmtss->fetch(PDO::FETCH_ASSOC)){ ?>
 <tr><td><a href="index.php?page=tender_status_details&t_id=<?php echo $t_id; ?>&t_name=<?php echo $t_name; ?>&ts_id=<?php echo $row['ts_id']; ?>"><?php echo $nice_date = date('d M Y', strtotime( $row['date'] ));?></a></td>
@@ -272,11 +289,13 @@ chart.render();
 <td><?php echo $row['daily_expense']; ?></td>
 <td><p><?php echo $row['reson_late']; ?></p></td>
 <td><a href="../sih_files/Uploads/Invoices/<?php echo $row['invoice_file']; ?>"download>Download</a></td>
-<td><a href="../sih_files/Uploads/Invoices/<?php echo $row['lab_report']; ?>"download>Download</a></td>
 <td><?php echo $row['other']; ?></td>
 </tr>		
 		
 		<?php }?>
-	</table>
-	</div>	
-</div>
+	</table>	</div>	
+</div>  
+    
+    
+     </body>  
+</html>  

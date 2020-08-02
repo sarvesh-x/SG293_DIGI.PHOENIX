@@ -46,7 +46,6 @@ $stmt=$db_con->prepare("SELECT COUNT(tender_master.t_id) as total_tender FROM te
 
 </div>
 
-
             <div class="row clearfix">
                 <div class="col-xs-12 col-sm-12">
                     <div class="card">
@@ -84,7 +83,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 chart.render();
 }
 </script>
-
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                     </div>
 				</div>

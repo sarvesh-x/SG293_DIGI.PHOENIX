@@ -63,7 +63,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class ImageUploadActivity extends Activity implements LocationListener {
 
-    String UPLOAD_URL = "http://kshatriyaschool.com/sih/sih_files/fileUpload.php";
+    String UPLOAD_URL = "http://gynamonline.com/rhcms/sih_files/fileUpload.php";
     ImageView img;
     Button btn,nextBtn;
     boolean check = true;
@@ -80,7 +80,7 @@ public class ImageUploadActivity extends Activity implements LocationListener {
     private ListView list;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> arrayList;
-    private static final String TS_ID_URL = "http://kshatriyaschool.com/sih/sih_files/get_ts_id.php";
+    private static final String TS_ID_URL = "http://gyanamonline.com/rhcms/sih_files/get_ts_id.php";
     public static String ts_id = null;
 
     @Override

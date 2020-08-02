@@ -70,7 +70,7 @@ $(document).ready(function(){
                     <tr>
 						<td><?php echo $i++; ?></td>
                         <td><?php echo $row['t_name']; ?></td>
-                        <td><a href="index.php?page=third_party_survey&id=<?php echo $id; ?>&t_id=<?php echo $row['t_id']; ?>">Check</a></td>
+                        <td><a href="index.php?page=third_party_survey&id=<?php echo $id; ?>&t_id=<?php echo $row['t_id']; ?>&t_name=<?php echo $row['t_name']; ?>&name=<?php echo $name; ?>">Check</a></td>
 						<td><?php echo $nice_date = date('d M Y', strtotime( $row['t_issue_date'] ));?></td>
 						<td><?php echo $nice_date = date('d M Y', strtotime( $row['t_due_date'] ));?>	</td>
  
