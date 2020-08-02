@@ -1,4 +1,3 @@
 # SG293_DIGI.PHOENIX
 
-Admin.zip contains source files of Web Application and Client APIs. 
-rhcms.sql contains database definition.
+sih/admin folder contains WebApplication files.
