@@ -21,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
@@ -48,6 +49,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class VerifyLocationActivity extends AppCompatActivity implements LocationListener{
 
+
     double lat;
     double lon;
     LocationManager locationManager;
@@ -64,6 +66,7 @@ public class VerifyLocationActivity extends AppCompatActivity implements Locatio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_location);
         getLocation();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         Button btn = findViewById(R.id.verify_Btn);
         final CheckBox cb = findViewById(R.id.checkBox);
 

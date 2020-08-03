@@ -87,6 +87,17 @@
             android:textAllCaps="false"
             android:textColor="#FFF"
             android:focusable="true" />
+        <Button
+            android:id="@+id/houseOwner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:background="@color/cardColorTeal"
+            android:text="Sign in as House Owner"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:focusable="true" />
     </LinearLayout>
 
     <ImageView

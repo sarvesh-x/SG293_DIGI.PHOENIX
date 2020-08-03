@@ -1,14 +1,18 @@
 package jay.shankar.sih2020_digiphoenix;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -25,6 +29,7 @@ import java.io.Serializable;
 
 public class SiteRangeActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    boolean INRANGE;
     private Serializable escolas;
     private ProgressDialog dialog;
     private Circle mCircle;
@@ -35,7 +40,7 @@ public class SiteRangeActivity extends FragmentActivity implements OnMapReadyCal
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_site_range);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         if (mapFragment != null) {
@@ -43,15 +48,6 @@ public class SiteRangeActivity extends FragmentActivity implements OnMapReadyCal
         }
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -103,8 +99,25 @@ public class SiteRangeActivity extends FragmentActivity implements OnMapReadyCal
                         mCircle.getCenter().latitude, mCircle.getCenter().longitude, distance);
 
                 if( distance[0] > mCircle.getRadius()  ){
+                    INRANGE = false;
+                    AlertDialog.Builder alert = new AlertDialog.Builder(SiteRangeActivity.this);
+                    alert.setTitle("Alert");
+                    alert.setMessage("Currently You're present Outside the Site Area and will not be Allowed to Upload the Details of Today's Work.\n" +
+                            "Please Be present in the Site Area while Uploading Details.");
+                    alert.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                            startActivity(new Intent(SiteRangeActivity.this,HomeActivity.class));
+                        }
+                    });
+                    alert.setCancelable(false);
+                    alert.create();
+                    alert.show();
+
                     Toast.makeText(getBaseContext(), "You're Outside the Range of Construction Site", Toast.LENGTH_LONG).show();
                 } else {
+                    INRANGE = true;
                     Toast.makeText(getBaseContext(), "Inside the Range of Construction Site", Toast.LENGTH_LONG).show();
                 }
             }
@@ -121,6 +134,10 @@ public class SiteRangeActivity extends FragmentActivity implements OnMapReadyCal
 
         MarkerOptions markerOptions = new MarkerOptions().position(position);
         mMarker = mMap.addMarker(markerOptions);
+    }
+
+    public boolean isInRange(){
+        return INRANGE;
     }
 
 }

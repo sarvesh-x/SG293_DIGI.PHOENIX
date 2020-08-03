@@ -4,7 +4,7 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="terms_and_conditions">Terms and Conditions: </string>
+    <string name="terms_and_conditions">Terms and Conditions: \nI understand and acknowledge that an EV Certificate serves as a form of digital identity for Applicant and that the loss or misuse of this identity can result in great harm to the Applicant. By signing this Subscriber Agreement, I hereby represent that I have the authority to obtain the digital equivalent of a company stamp, seal, or (where applicable) officer’s signature to establish the authenticity of the company’s website, and that Applicant is responsible for all uses of its EV Certificate. By signing this Agreement on behalf of Applicant, I further represent that I (i) am acting as an authorized representative of Applicant, (ii) am expressly authorized by Applicant to sign Subscriber Agreements and approve EV Certificate requests on Applicant\'s behalf and  have confirmed Applicants exclusive right to use the domains to be included in EV Certificates.</string>
     <string name="title_activity_invoice_upload">InvoiceUploadActivity</string>
     <!--
     This string is used for square devices and overridden by hello_world in
@@ -38,4 +38,5 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_site_range">Map</string>
+    <string name="title_activity_house_owner">HouseOwnerActivity</string>
 </resources>
