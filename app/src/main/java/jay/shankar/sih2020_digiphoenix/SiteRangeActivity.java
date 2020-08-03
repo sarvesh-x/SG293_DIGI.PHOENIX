@@ -1,13 +1,18 @@
 package jay.shankar.sih2020_digiphoenix;
 
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -41,8 +46,33 @@ public class SiteRangeActivity extends FragmentActivity implements OnMapReadyCal
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng tender = new LatLng(HomeActivity.lat, HomeActivity.lon);
+        mMap.addMarker(new MarkerOptions().position(tender).title(HomeActivity.TenderName));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(tender));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
+        drawCircle(new LatLng(HomeActivity.lat, HomeActivity.lon));
     }
+
+    private void drawCircle(LatLng point){
+
+        CircleOptions circleOptions = new CircleOptions();
+        circleOptions.center(point);
+        circleOptions.radius(20);
+        circleOptions.strokeColor(Color.BLACK);
+        circleOptions.fillColor(0x30ff0000);
+        circleOptions.strokeWidth(2);
+        mMap.addCircle(circleOptions);
+
+    }
+
 }

@@ -229,7 +229,7 @@ public class LoginActivity extends Activity {
                         startActivity(new Intent(LoginActivity.this,HomeActivity.class));
 
                    // } else {
-                        Toast.makeText(getApplicationContext(), "Wrong Username or Password!", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getApplicationContext(), "Wrong Username or Password!", Toast.LENGTH_SHORT).show();
                    // }
 
                 } catch (JSONException e) {
@@ -254,7 +254,7 @@ public class LoginActivity extends Activity {
             }
         };
 
-        requestQueue.add(request);
+        Volley.newRequestQueue(LoginActivity.this).add(request);
 
     }
 

@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public String ts_id;
     LocationManager locationManager;
     private static final String LOCATION_URL = "http://gyanamonline.com/rhcms/sih_files/tender_details.php";
-    public String exp_budget_status;
+    public static String TenderName;
     String VERIFIED = null;
     public static String lat_long = null;
     public static double lat,lon;
@@ -105,7 +105,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             JSONObject t_details_current = array.getJSONObject(0);
                             VERIFIED = t_details_current.get("vp").toString();
                             lat_long = t_details_current.get("lat_long").toString();
-
+                            TenderName = t_details_current.get("t_name").toString();
                             String[] latlong =  lat_long.split(",");
                             lat = Double.parseDouble(latlong[0]);
                             lon = Double.parseDouble(latlong[1]);
@@ -114,7 +114,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                                 startActivity(new Intent(HomeActivity.this,VerifyLocationActivity.class));
                                 finish();
                             }else {
-
+                                //Toast.makeText(HomeActivity.this,""+lat+"-"+lon,Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (JSONException e) {
@@ -318,7 +318,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onLocationChanged(Location location) {
-
+        lat = location.getLatitude();
+        lon = location.getLongitude();
     }
 
     @Override
