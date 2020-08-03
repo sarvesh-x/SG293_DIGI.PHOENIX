@@ -5,3 +5,8 @@ Stack trace:
   thrown in /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php on line 10
 [03-Aug-2020 03:00:51 UTC] PHP Notice:  Undefined index: i in /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php on line 247
 [03-Aug-2020 03:06:06 UTC] PHP Notice:  Undefined index: i in /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php on line 247
+[03-Aug-2020 06:12:01 UTC] PHP Notice:  Undefined index: i in /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php on line 247
+[03-Aug-2020 08:01:29 UTC] PHP Notice:  Undefined index: t_id in /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php on line 270
+[03-Aug-2020 08:01:29 UTC] PHP Notice:  Undefined variable: type in /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php on line 272
+[03-Aug-2020 08:01:29 UTC] PHP Notice:  Undefined variable: type in /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php on line 273
+[03-Aug-2020 08:37:17 UTC] PHP Notice:  Undefined variable: id in /home/jt75rds0a8oq/public_html/rhcms/admin/model/page_action.php on line 301

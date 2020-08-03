@@ -90,11 +90,6 @@ public class SiteRangeActivity extends FragmentActivity implements OnMapReadyCal
             public void onMyLocationChange(Location location) {
                 float[] distance = new float[2];
 
-                        /*
-                        Location.distanceBetween( mMarker.getPosition().latitude, mMarker.getPosition().longitude,
-                                mCircle.getCenter().latitude, mCircle.getCenter().longitude, distance);
-                                */
-
                 Location.distanceBetween( location.getLatitude(), location.getLongitude(),
                         mCircle.getCenter().latitude, mCircle.getCenter().longitude, distance);
 

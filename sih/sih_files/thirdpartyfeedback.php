@@ -9,7 +9,7 @@ include 'DatabaseConfig.php';
  $date = $_POST['date']; 
  $feedback = $_POST['feedback'];
  
- $SQLQuery = "INSERT INTO `thirdPartyFeedback`(`t_id`, `date`, `feedback`) VALUES ('$t_id','$date','$feedback') ";
+ $SQLQuery = "INSERT INTO `thirdpartyfeedback`(`t_id`, `date`, `feedback`) VALUES ('$t_id','$date','$feedback') ";
  
 if(mysqli_query($connection,$SQLQuery))
 {

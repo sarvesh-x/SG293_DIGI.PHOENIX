@@ -12,7 +12,7 @@ include 'DatabaseConfig.php';
  $Lat_Long = $_POST['lat_long'];
  $ImagePath = "Uploads/ThirdPartyImages/$ImageName.png";
  
- $sql = "INSERT INTO `thirdPartyImages`(`t_id`, `image_name`, `lat_long`) VALUES ('$t_id','$ImagePath','$Lat_Long')";
+ $sql = "INSERT INTO `thirdpartyimages`(`t_id`, `image_name`, `lat_long`) VALUES ('$t_id','$ImageName','$Lat_Long')";
  
  if(mysqli_query($connection,$sql)){
  file_put_contents($ImagePath,base64_decode($ImageData));

@@ -259,8 +259,15 @@ function myFunctions(id) {
 						</div>
 						<div class="form-group">
 							<label>Range</label>
-							<input type="number" class="form-control" name="range" required id="fc">
+				<select class="form-control" name="range" required id="fc">
+				<option value=".1">100</option>
+				<option value=".2">200</option>
+				<option value=".3">300</option>
+				<option value=".4">400</option>
+				</select>
 						</div>
+						<br>
+						<br>
 					
 					<div class="form-group">
 							<label>Tender Details</label>

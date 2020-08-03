@@ -261,5 +261,45 @@ echo "<script>
 		   </script>";
 
 	 }
-}	
+}
+# Add House Owner
+if(isset($_POST['sign_up_button']))
+{
+	 $name=$_POST['namesurname'];
+	 $email=$_POST['email'];
+	 $t_id=$_POST['t_id'];
+	 $password=$_POST['password'];
+	 $type=$_POST['type'];
+	$stmts=$db_con->prepare("INSERT INTO user_master(user_master.username,user_master.email,user_master.password,user_master.type,user_master.t_id,user_master.cmp_code)VALUES('$name','$email','$password','$type','$t_id','1')");
+	$stmts->execute();
+echo "<script>
+		   alert('Successfully Register');
+		   window.location.replace('../house_owner.php');
+		   </script>";
+
+}
+# Login House Owner
+if(isset($_POST['login_btn_house']))
+{
+	$username=$_POST['username'];
+	$password=$_POST['password'];
+	$stmt=$db_con->prepare("SELECT user_master.user_id FROM user_master WHERE user_master.email='$username' AND user_master.password='$password' AND user_master.type='House Owner' ");
+	$stmt->execute();
+	$row=$stmt->fetch(PDO::FETCH_ASSOC);
+	  $u_id=$row['user_id'];
+	   if($u_id=='')
+	   {
+	   
+		   echo "<script>
+		   alert('Login Faild');
+		   window.location.replace('../house_owner.php');
+		   </script>";
+	   }
+	   else{
+		   $_SESSION["user_id"]=$u_id;
+		   echo "<script>
+		   window.location.replace('../house_owner_dashboard.php');
+		   </script>";
+	   }
+}
 ?>
