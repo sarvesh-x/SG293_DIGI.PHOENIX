@@ -54,8 +54,6 @@ public class SiteRangeActivity extends FragmentActivity implements OnMapReadyCal
 
         double mLatitude = HomeActivity.lat;
         double mLongitude = HomeActivity.lon;
-
-        // Add a marker in Sydney and move the camera
         LatLng tender = new LatLng(HomeActivity.lat, HomeActivity.lon);
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
