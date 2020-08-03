@@ -52,7 +52,7 @@ public class SiteRangeActivity extends FragmentActivity implements OnMapReadyCal
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        double mLatitude =HomeActivity.lat;
+        double mLatitude = HomeActivity.lat;
         double mLongitude = HomeActivity.lon;
 
         // Add a marker in Sydney and move the camera
@@ -93,7 +93,7 @@ public class SiteRangeActivity extends FragmentActivity implements OnMapReadyCal
                 Location.distanceBetween( location.getLatitude(), location.getLongitude(),
                         mCircle.getCenter().latitude, mCircle.getCenter().longitude, distance);
 
-                if( distance[0] > mCircle.getRadius()  ){
+                if( distance[0] > mCircle.getRadius()){
                     INRANGE = false;
                     AlertDialog.Builder alert = new AlertDialog.Builder(SiteRangeActivity.this);
                     alert.setTitle("Alert");

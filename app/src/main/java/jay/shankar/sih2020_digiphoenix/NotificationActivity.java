@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
@@ -42,7 +43,7 @@ import jay.shankar.sih2020_digiphoenix.Models.Notification;
 import jay.shankar.sih2020_digiphoenix.R;
 
 
-public class NotificationActivity extends AppCompatActivity {
+public class NotificationActivity extends AppCompatActivity implements LocationListener {
 
     private StringRequest request;
     LocationManager locationManager;
@@ -187,4 +188,23 @@ public class NotificationActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onLocationChanged(Location location) {
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
 }

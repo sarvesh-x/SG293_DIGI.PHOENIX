@@ -37,11 +37,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.androidstudy.networkmanager.Monitor;
 import com.androidstudy.networkmanager.Tovuti;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.Circle;
-import com.google.android.gms.maps.model.Marker;
 import com.mindorks.paracamera.Camera;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,7 +47,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -73,11 +67,6 @@ public class ImageUploadActivity extends Activity implements LocationListener {
     ImageView img;
     Button btn,nextBtn;
     boolean check = true;
-    private Serializable escolas;
-    private ProgressDialog dialog;
-    private Circle mCircle;
-    private Marker mMarker;
-    private GoogleMap mMap;
     Camera camera;
     Bitmap bitmap;
     LocationManager locationManager;
@@ -94,8 +83,6 @@ public class ImageUploadActivity extends Activity implements LocationListener {
     private static final String TS_ID_URL = "http://gyanamonline.com/rhcms/sih_files/get_ts_id.php";
     public static String ts_id = null;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,7 +96,7 @@ public class ImageUploadActivity extends Activity implements LocationListener {
             @Override
             public void onConnectivityChanged(int connectionType, boolean isConnected, boolean isFast){
                 // TODO: Handle the connection...
-                if(isConnected )
+                if(isConnected)
                 {
 
                     btn = findViewById(R.id.addBtn);
