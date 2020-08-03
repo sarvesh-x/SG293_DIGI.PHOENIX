@@ -232,7 +232,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         current_progress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, RangeActivity.class));
+                startActivity(new Intent(HomeActivity.this, SiteRangeActivity.class));
             }
         });
     }

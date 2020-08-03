@@ -54,15 +54,8 @@ public class LoginActivity extends Activity {
 
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
     ProgressDialog progressDialog;
-    private SharedPreferences loginPreferences;
-    private SharedPreferences.Editor loginPrefsEditor;
-    private Boolean saveLogin;
-    private CheckBox remeberme;
-    private CheckBox houseowner;
     private EditText email;
     private EditText password;
-    Button thirdPartySurvey,contractor_sign_in;
-    //private Button sign_in;
     private RequestQueue requestQueue;
     private static final String URL = "http://gyanamonline.com/rhcms/sih_files/logininfo.php";
     private StringRequest request;
@@ -75,10 +68,11 @@ public class LoginActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        requestQueue = Volley.newRequestQueue(LoginActivity.this);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         progressDialog = new ProgressDialog(LoginActivity.this);
         email = (EditText) findViewById(R.id.email);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             email.setCustomInsertionActionModeCallback(new ActionMode.Callback() {
                 @Override
                 public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -125,7 +119,7 @@ public class LoginActivity extends Activity {
         email.setLongClickable(false);
         email.setTextIsSelectable(false);
         password = (EditText) findViewById(R.id.password);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             password.setCustomInsertionActionModeCallback(new ActionMode.Callback() {
                 @Override
                 public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -171,15 +165,7 @@ public class LoginActivity extends Activity {
         });
         password.setLongClickable(false);
         password.setTextIsSelectable(false);
-        thirdPartySurvey = findViewById(R.id.thirdPartySurvey);
-        contractor_sign_in = findViewById(R.id.contractor_sign_in);
-        requestQueue = Volley.newRequestQueue(LoginActivity.this);
-        contractor_sign_in.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                login();
-            }
-        });
+        Button thirdPartySurvey = (Button) findViewById(R.id.thirdPartySurvey);
         thirdPartySurvey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -211,9 +197,11 @@ public class LoginActivity extends Activity {
                 }
             });
 
+
         }
     }
-    private void login(){
+
+    public void login(View view){
 
         progressDialog.setMessage("Please Wait, Logging in...");
         progressDialog.show();
@@ -226,7 +214,7 @@ public class LoginActivity extends Activity {
                     JSONArray array = new JSONArray(response);
                     JSONObject t_array = array.getJSONObject(0);
 
-                    if (t_array.get("email").equals(email.getText().toString()) || t_array.get("password").equals(password.getText().toString())) {
+                   // if (t_array.get("email").equals(email.getText().toString()) || t_array.get("password").equals(password.getText().toString())) {
 
                         user.add(t_array.get("name").toString());//stores name of the user    0
                         user.add(t_array.get("email").toString());//stores username of the user     1
@@ -235,14 +223,14 @@ public class LoginActivity extends Activity {
                         user.add(t_array.get("mobile").toString());//stores the mobile no. of the user     4
                         user.add(t_array.get("address").toString());//stores the address of the user       5
 
-                        Toast.makeText(getApplicationContext(), "Welcome " + user.get(0), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        intent.putExtra("username", email.getText().toString());
-                        startActivity(intent);
+                        Toast.makeText(LoginActivity.this, "Welcome " + user.get(0), Toast.LENGTH_SHORT).show();
+                        //Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        //intent.putExtra("username", email.getText().toString());
+                        startActivity(new Intent(LoginActivity.this,HomeActivity.class));
 
-                    } else {
+                   // } else {
                         Toast.makeText(getApplicationContext(), "Wrong Username or Password!", Toast.LENGTH_SHORT).show();
-                    }
+                   // }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -269,6 +257,8 @@ public class LoginActivity extends Activity {
         requestQueue.add(request);
 
     }
+
+
 
     private boolean checkAndRequestPermissions() {
         int permissionSendMessage = ContextCompat.checkSelfPermission(this,

@@ -76,7 +76,7 @@ public class UpdateTodaysWorkActivity extends AppCompatActivity implements Locat
 
     private void buildAlertMessageNoGps () {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Your GPS seems to be disabled, Enable it Upload Images?")
+        builder.setMessage("Your GPS seems to be disabled, Enable it to Upload Images?")
                 .setCancelable(false)
                 .setPositiveButton("Enable", new DialogInterface.OnClickListener() {
                     public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
