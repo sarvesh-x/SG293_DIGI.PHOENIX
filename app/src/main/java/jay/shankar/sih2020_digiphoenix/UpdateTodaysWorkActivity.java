@@ -67,7 +67,7 @@ public class UpdateTodaysWorkActivity extends AppCompatActivity implements Locat
         float[] dist = new float[5];
         Location.distanceBetween(lat,lon,current_lat,current_lon,dist);
 
-        range = Integer.parseInt(HomeActivity.RANGE);
+        range = Integer.parseInt(String.valueOf(HomeActivity.RANGE));
 
         if(dist[0]/1000 > range){
             Toast.makeText(UpdateTodaysWorkActivity.this,"Outside Range",Toast.LENGTH_SHORT).show();

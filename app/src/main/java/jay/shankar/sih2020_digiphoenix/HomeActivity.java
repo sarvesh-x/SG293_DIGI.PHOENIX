@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     String VERIFIED = null;
     public static String lat_long = null;
     public static double lat,lon;
-    public static  String RANGE;
+    public static Double RANGE;
     public String tender_id,tender_type,tender_name,tender_issue_date,tender_due_date,tender_budget,tender_details,tender_exp_budget;
 
 
@@ -109,7 +109,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             String[] latlong =  lat_long.split(",");
                             lat = Double.parseDouble(latlong[0]);
                             lon = Double.parseDouble(latlong[1]);
-                            RANGE = t_details_current.get("r").toString();
+                            RANGE = Double.valueOf(t_details_current.get("r").toString());
                             if(VERIFIED.equals("No")){
                                 startActivity(new Intent(HomeActivity.this,VerifyLocationActivity.class));
                                 finish();
@@ -226,6 +226,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         help_and_support.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,HelpandSupportActivity.class));
 
             }
         });
