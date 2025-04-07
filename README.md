@@ -54,8 +54,8 @@ SG293_DIGI.PHOENIX/
 
 `git clone https://github.com/sarvesh-x/SG293_DIGI.PHOENIX.git`
 ##
-  <img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f0b088ab142520a681049bee09c072d1fbf1a1b9/Picture4.png">
-  <img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f4aa7e49fc69042fd48a3f932b1ef67fda2f016b/Picture1.png">
+  <img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f0b088ab142520a681049bee09c072d1fbf1a1b9/Picture4.png" align="left">
+  <img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f4aa7e49fc69042fd48a3f932b1ef67fda2f016b/Picture1.png" alight="right">
 
 ##
 - Host sih/admin on a local server (e.g., XAMPP/WAMP).
