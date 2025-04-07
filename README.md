@@ -50,18 +50,15 @@ SG293_DIGI.PHOENIX/
 ##
 🛠️ Setup Instructions
   Web Panel & Backend
-  Clone the repo:
-
-`git clone https://github.com/sarvesh-x/SG293_DIGI.PHOENIX.git`
+  Clone the repo:   `git clone https://github.com/sarvesh-x/SG293_DIGI.PHOENIX.git`
 ##
-  <img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f0b088ab142520a681049bee09c072d1fbf1a1b9/Picture4.png" align="left">
-  <img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f4aa7e49fc69042fd48a3f932b1ef67fda2f016b/Picture1.png" alight="right">
-
-##
+🌐 Web Portal
 - Host sih/admin on a local server (e.g., XAMPP/WAMP).
 - Import the database SQL dump into MySQL.
 - Update DB credentials in the config file.
-
+  <img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f0b088ab142520a681049bee09c072d1fbf1a1b9/Picture4.png" align="left">
+  <img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f4aa7e49fc69042fd48a3f932b1ef67fda2f016b/Picture1.png" alight="right">
+##
 📱  Android Client
 - Open the Android project in Android Studio.
 - Update API base URLs in the app as needed.
@@ -70,13 +67,13 @@ SG293_DIGI.PHOENIX/
   
   <img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f4aa7e49fc69042fd48a3f932b1ef67fda2f016b/Picture2.jpg">
   <img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f4aa7e49fc69042fd48a3f932b1ef67fda2f016b/Picture3.jpg">
-
+##
 💡 Use Cases
 - Staff attendance via geo-fencing
 - Document digitization and approval workflows
 - Role-based access to admin tools
 - Real-time location-aware task updates
-
+##
 👥 Contributors
 - Sarvesh-x
 - SIH Team SG293
