@@ -1,5 +1,5 @@
 # RHCMS - Rural Housing Construction Management System
-# Team Code - SG293_DIGI.PHOENIX
+ Team Code - SG293_DIGI.PHOENIX
 
 RHCMS is a smart, multi-platform solution built to digitize and streamline institutional workflows. Designed as part of a Smart India Hackathon initiative, it includes a web-based admin panel and a companion Android client that work together to manage users, records, and institutional operations efficiently.
 
