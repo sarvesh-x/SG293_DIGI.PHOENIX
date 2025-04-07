@@ -58,26 +58,20 @@ SG293_DIGI.PHOENIX/
 - Import the database SQL dump into MySQL.
 - Update DB credentials in the config file.
 
-Android Client
-Open the Android project in Android Studio.
-
-Update API base URLs in the app as needed.
-
-Build and run on a device (location permissions required).
+📱  Android Client
+- Open the Android project in Android Studio.
+- Update API base URLs in the app as needed.
+- Build and run on a device (location permissions required).
 
 💡 Use Cases
-Staff attendance via geo-fencing
-
-Document digitization and approval workflows
-
-Role-based access to admin tools
-
-Real-time location-aware task updates
+- Staff attendance via geo-fencing
+- Document digitization and approval workflows
+- Role-based access to admin tools
+- Real-time location-aware task updates
 
 👥 Contributors
-Sarvesh-x
-
-SIH Team SG293
+- Sarvesh-x
+- SIH Team SG293
 
 📄 License
 This project was developed for the Smart India Hackathon. License to be determined.
