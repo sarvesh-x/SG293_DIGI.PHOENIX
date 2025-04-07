@@ -1,4 +1,4 @@
-# SG293_DIGI.PHOENIX
+# RHCMS - Rural Housing Construction Management System
 
 RHCMS is a smart, multi-platform solution built to digitize and streamline institutional workflows. Designed as part of a Smart India Hackathon initiative, it includes a web-based admin panel and a companion Android client that work together to manage users, records, and institutional operations efficiently.
 
@@ -54,6 +54,7 @@ SG293_DIGI.PHOENIX/
 
 `git clone https://github.com/sarvesh-x/SG293_DIGI.PHOENIX.git`
 
+<img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f4aa7e49fc69042fd48a3f932b1ef67fda2f016b/Picture4.jpg">
 - Host sih/admin on a local server (e.g., XAMPP/WAMP).
 - Import the database SQL dump into MySQL.
 - Update DB credentials in the config file.
@@ -62,6 +63,9 @@ SG293_DIGI.PHOENIX/
 - Open the Android project in Android Studio.
 - Update API base URLs in the app as needed.
 - Build and run on a device (location permissions required).
+  <img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f4aa7e49fc69042fd48a3f932b1ef67fda2f016b/Picture1.png">
+  <img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f4aa7e49fc69042fd48a3f932b1ef67fda2f016b/Picture2.jpg">
+  <img src="https://github.com/sarvesh-x/SG293_DIGI.PHOENIX/blob/f4aa7e49fc69042fd48a3f932b1ef67fda2f016b/Picture3.jpg">
 
 💡 Use Cases
 - Staff attendance via geo-fencing
